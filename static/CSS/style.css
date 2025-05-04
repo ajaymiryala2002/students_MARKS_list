@@ -1,0 +1,31 @@
+.main{
+    border:0px solid blue;
+    width:40%;
+    height:500px;
+    float:left;
+    margin-top:80px;
+    text-align: center;
+    margin-left:450px;
+    background-image: linear-gradient(to left, rgb(225, 214, 223), rgba(0, 0, 255, 0.545));
+   
+
+}
+input[type=search]{
+    width: 350px;
+    height:50px;
+    margin-top:30px;
+    border-radius:30px;
+    text-align: center;
+}
+button[type=submit]{
+    width:100px;
+    height:50px;
+    margin-top:30px;
+    border-radius: 30px;
+}
+.table{
+    text-align: center;
+    margin-left:400px;
+    border: 2px solid green;
+    width:45%;
+}

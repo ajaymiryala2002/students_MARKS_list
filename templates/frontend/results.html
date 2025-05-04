@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
+
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+</head>
+<body>
+    <div>
+
+    {% if messages %}
+    {% for message in messages %}
+    <p style="color: red;" id="p1">{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    
+    <table  border='2' id="t1" class="table">
+
+    <!-- <table class="table table-dark table-striped-columns"> -->
+        
+        
+    <h3 style="color: green;" id="h3">Congratulations</h3>
+            <tr>
+            
+            <th>Hallticket_NO</th>
+            <th>student_name</th>
+            <th>TELUGU</th>
+            <th>HINDI</th>
+            <th>ENGLISH</th>
+            <th>MATHS</th>
+            <th>SCIENCE</th>
+            <th>SOCIAL</th>
+            
+        </tr>
+            {% for x in std1 %}
+            <tr>
+                <td>{{x.Hallticket_NO}}</td>
+                <td >{{x.student_name}}</td>
+                <td id="telugu">{{x.TELUGU}}</td>
+                <td id="hindi">{{x.HINDI}}</td>
+                <td id="english">{{x.ENGLISH}}</td>
+                <td id="maths">{{x.MATHS}}</td>
+                <td id="science">{{x.SCIENCE}}</td>
+                <td id="social">{{x.SOCIAL}}</td>
+            </tr>
+            {% endfor %}
+            
+        </table>
+        <br>
+
+        <a href="{% url 'home' %}" style="margin-left:700px;" ><button>GO back</button></a>
+       
+    </div>
+    <script>
+        var y=document.getElementById('p1')
+        var t=document.getElementById('t1')
+        var h=document.getElementById('h3')
+        // Get all table rows (skip the header row)
+        const rows = document.querySelectorAll('#t1 tr');
+        
+rows.forEach((row, index) => {
+    if (index === 0) return; // Skip header row
+
+    const cells = ['telugu', 'hindi', 'english', 'maths', 'science', 'social'];
+
+    cells.forEach((id) => {
+        const cell = row.querySelector(`#${id}`);
+        const mark = parseInt(cell.innerText);
+
+        if (mark < 35) {
+            cell.style.backgroundColor = 'red'; // Highlight the cell
+        }
+        else if (mark>35){
+            // h.style.display='block'
+            cell.style.backgroundColor='green'
+            
+
+        }
+       
+        else
+          {cell.style.backgroundColor='green';
+            // y.style.display='block';
+            // t.style.display='none'
+            h.style.display='none'
+
+            
+        }
+    });
+    
+});
+if  (y.style.display=='block'){
+    t.style.display='none'
+    h.style.display='none'
+}
+else{
+    t.style.display='none'
+    h.style.display='none'
+}
+</script>
+
+    
+    
+</body>
+</html>
